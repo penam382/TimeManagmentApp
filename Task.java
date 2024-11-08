@@ -1,3 +1,6 @@
+/*
+ * Author: Marco Pena
+ */
 public class Task {
 
     private String name;
@@ -22,7 +25,7 @@ public class Task {
 
     public int startEndTimesToMinutes(String timeStr) {
         int hour = 0;
-        int minutes = 0;
+        int minutes = 0; 
         String amPm = "";
 
         // Get the hour and minutes part
