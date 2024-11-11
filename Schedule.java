@@ -12,13 +12,26 @@ public class Schedule {
     private HashMap<String, Task> taskMap;
 
     public Schedule() {
-        tasks = new ArrayList<Task>();
-        taskMap = new HashMap<String, Task>();
+        tasks = new ArrayList<>();
+        taskMap = new HashMap<>();
     }
 
     public void add(Task task) {
         tasks.add(task);
         taskMap.put(task.getName(), task);
+    }
+
+    public boolean remove(String taskName) {
+        Task removeTask = taskMap.remove(taskName);
+        if (removeTask != null) {
+            tasks.remove(removeTask);
+            return true;
+        }
+        return false;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
     }
 
     public void sortByPriority() {

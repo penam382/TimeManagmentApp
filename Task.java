@@ -65,4 +65,9 @@ public class Task {
         return startTimeStr == null || startTimeStr.isEmpty();
     }
 
+    @Override
+    public String toString() {
+        return "Task [Name=" + name + ", Priority=" + priority + ", Estimated Time=" + estimatedTime + " mins]";
+    }
+
 }
