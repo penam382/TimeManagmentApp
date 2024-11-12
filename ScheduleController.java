@@ -8,6 +8,7 @@ public class ScheduleController {
 
     public ScheduleController(Schedule schedule) {
         this.schedule = schedule;
+        task = new Task(null, 0, 0);
         this.scanner = new Scanner(System.in);
     }
 
@@ -38,7 +39,7 @@ public class ScheduleController {
         int priority = scanner.nextInt();
         scanner.nextLine();
 
-        System.out.print("Do you have a set time for this? y/n");
+        System.out.print("Do you have a set time for this? 'y/n': ");
         String setTime = scanner.nextLine();
 
         if (setTime.equals("y")) {
@@ -54,6 +55,7 @@ public class ScheduleController {
             estimatedTime = scanner.nextInt();
             scanner.nextLine();
         }
+        
         newTask(name, priority, estimatedTime);
         
         System.out.println("Task added successfully.");

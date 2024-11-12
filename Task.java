@@ -48,14 +48,18 @@ public class Task {
     }
 
     public int calculateEstimatedTime(String startTimeStr, String endTimeStr) {
-        if (!isStartTime() && startTimeStr != null && !endTimeStr.isEmpty()) {
-            int startMinutes = startEndTimesToMinutes(startTimeStr);
-            int endMinutes = startEndTimesToMinutes(endTimeStr);
-            return endMinutes - startMinutes;
-        } else {
-            return estimatedTime;  // or some fallback value
+        // Calculate start and end times in minutes
+        int startMinutes = startEndTimesToMinutes(startTimeStr);
+        int endMinutes = startEndTimesToMinutes(endTimeStr);
+    
+        // Calculate difference, and handle cases where end time is the next day
+        int duration = endMinutes - startMinutes;
+        if (duration < 0) {
+            duration += 24 * 60; // Add 24 hours if end time is on the next day
         }
+        return duration;
     }
+    
 
     public double estimatedTimeInHours() {
         return (double) calculateEstimatedTime(startTimeStr, endTimeStr) / 60;
