@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class TextView {
     private ScheduleController controller;
     private Scanner scanner;
-
+    
     public TextView(ScheduleController controller) {
         this.controller = controller;
         this.scanner = new Scanner(System.in);

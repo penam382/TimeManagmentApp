@@ -1,18 +1,20 @@
 /*
  * Author: Marco Pena
  */
-public class Task {
+public class Task {  
 
     private String name;
     private int priority;
     private String startTimeStr;
     private String endTimeStr;
     private int estimatedTime; // minutes
+    private boolean specificTime;
 
     public Task(String name, int priority, int estimatedTime) {
         this.name = name;
         this.priority = priority;
         this.estimatedTime = estimatedTime;
+        this.specificTime = false;
     }
 
     public String getName() {
@@ -48,6 +50,7 @@ public class Task {
     }
 
     public int calculateEstimatedTime(String startTimeStr, String endTimeStr) {
+        specificTime = true;
         // Calculate start and end times in minutes
         int startMinutes = startEndTimesToMinutes(startTimeStr);
         int endMinutes = startEndTimesToMinutes(endTimeStr);
@@ -67,6 +70,10 @@ public class Task {
 
     public boolean isStartTime() {
         return startTimeStr == null || startTimeStr.isEmpty();
+    }
+
+    public boolean getSpecificTime() {
+        return specificTime;
     }
 
     @Override

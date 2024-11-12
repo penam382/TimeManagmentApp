@@ -8,7 +8,7 @@ public class ScheduleController {
 
     public ScheduleController(Schedule schedule) {
         this.schedule = schedule;
-        task = new Task(null, 0, 0);
+        // task = new Task(null, 0, 0);
         this.scanner = new Scanner(System.in);
     }
 
@@ -43,6 +43,7 @@ public class ScheduleController {
         String setTime = scanner.nextLine();
 
         if (setTime.equals("y")) {
+            
             System.out.print("Enter start time. Ex.'10:00pm': ");
             startTime = scanner.nextLine();
 
@@ -82,6 +83,13 @@ public class ScheduleController {
         String name = scanner.nextLine();
         boolean removed = deleteTask(name);
         System.out.println(removed ? "Task removed successfully." : "Task not found.");
+    }
+
+    public void createSchedule() {
+        if (task.getSpecificTime()) {
+            
+            
+        }
     }
 
 
