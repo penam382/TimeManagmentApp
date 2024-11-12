@@ -47,8 +47,8 @@ public class Task {
         return hour * 60 + minutes; // Convert total time to minutes
     }
 
-    public int calculateEstimatedTime() {
-        if (!isStartTime() && endTimeStr != null && !endTimeStr.isEmpty()) {
+    public int calculateEstimatedTime(String startTimeStr, String endTimeStr) {
+        if (!isStartTime() && startTimeStr != null && !endTimeStr.isEmpty()) {
             int startMinutes = startEndTimesToMinutes(startTimeStr);
             int endMinutes = startEndTimesToMinutes(endTimeStr);
             return endMinutes - startMinutes;
@@ -58,7 +58,7 @@ public class Task {
     }
 
     public double estimatedTimeInHours() {
-        return (double) calculateEstimatedTime() / 60;
+        return (double) calculateEstimatedTime(startTimeStr, endTimeStr) / 60;
     }
 
     public boolean isStartTime() {

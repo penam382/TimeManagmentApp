@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class ScheduleController {
     private Schedule schedule;
+    private Task task;
     private Scanner scanner;
 
     public ScheduleController(Schedule schedule) {
@@ -28,14 +29,33 @@ public class ScheduleController {
     }
 
     public void addTask() {
+        String startTime = "";
+        int estimatedTime = 0;
+
         System.out.print("Enter task name: ");
         String name = scanner.nextLine();
         System.out.print("Enter priority (1-10): ");
         int priority = scanner.nextInt();
-        System.out.print("Enter estimated time in minutes: ");
-        int estimatedTime = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
+        scanner.nextLine();
+
+        System.out.print("Do you have a set time for this? y/n");
+        String setTime = scanner.nextLine();
+
+        if (setTime.equals("y")) {
+            System.out.print("Enter start time. Ex.'10:00pm': ");
+            startTime = scanner.nextLine();
+
+            System.out.print("Enter end time. Ex.'8:00am': ");
+            String endTime = scanner.nextLine();
+
+            estimatedTime = task.calculateEstimatedTime(startTime, endTime);
+        } else {
+            System.out.print("Enter estimated time in minutes: ");
+            estimatedTime = scanner.nextInt();
+            scanner.nextLine();
+        }
         newTask(name, priority, estimatedTime);
+        
         System.out.println("Task added successfully.");
     }
 
@@ -45,7 +65,7 @@ public class ScheduleController {
             System.out.println("No tasks to display.");
         } else {
             for (Task task : tasks) {
-                System.out.println(task); // Override `toString` in Task to show formatted details
+                System.out.println(task); 
             }
         }
     }
